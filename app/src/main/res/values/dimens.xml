@@ -5,4 +5,5 @@
 
     <dimen name="h1">30dp</dimen>
     <dimen name="h2">20dp</dimen>
+    <dimen name="Icon">120dp</dimen>
 </resources>
