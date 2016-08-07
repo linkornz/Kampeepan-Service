@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         //Explicit
         private Context context;    //โยน data ระหว่าง class ต้องต่อท่อ context
         private String myUserString, myPasswordString,
-                truePasswordString, nameString;  //รับค่า string จาก main class
+                truePasswordString, nameString, avataString;  //รับค่า string จาก main class
         private static final String urlJson = "http://swiftcodingthai.com/6aug/get_user_bow.php";
         private boolean statusABoolean = true;
 
@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         truePasswordString = jsonObject.getString("Password");
                         nameString = jsonObject.getString("Name");
                         statusABoolean = false;
+                        avataString = jsonObject.getString("Avata");
                     }   //if
                 }   //for
                 if (statusABoolean) {
@@ -91,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
                     //Password True
                     //Toast = text Alert แล้วหายไป
                     Toast.makeText(context, "Welcome " + nameString, Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(MainActivity.this, ServiceActivity.class);
+                    intent.putExtra("Name", nameString);
+                    intent.putExtra("Avata", avataString);
+                    startActivity(intent);
+                    finish();
 
                 } else {
                     //Password False
